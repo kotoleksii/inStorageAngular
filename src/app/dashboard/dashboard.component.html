@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+  <!--  <a href="/" class="logo">-->
+  <!--    <img src="assets/images/logo.png" alt="logo" width="33" height="33">-->
+  <!--      InStorage-->
+  <!--  </a>-->
+
+  <a href="/dashboard/" class="logo-img"><img src="assets/images/logo.png" alt="InStorage" width="36" height="36"/></a>
+  <h1><a href="/dashboard/" class="logo-text">InStorage</a></h1>
+
+  <div class="flex-stretch"></div>
+  <mat-icon class="mr-8">brightness_5</mat-icon>
+  <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+  </mat-slide-toggle>
+  <mat-icon>bedtime</mat-icon>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>account_circle</mat-icon>
+      <span>{{userData.name}}</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<div class="content mat-app-background" fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px">
+
+  <div class="dashboard-nav">
+    <nav mat-tab-nav-bar mat-tab-nav-bar mat-align-tabs="center">
+      <a mat-tab-link
+         *ngFor="let link of navLinks"
+         [routerLink]="link.link"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        <mat-icon class="tab-icon">{{link.icon}}</mat-icon>
+        {{link.label}}
+      </a>
+    </nav>
+    <!--    <div>-->
+    <!--      <mat-icon class="mr-8">brightness_5</mat-icon>-->
+    <!--      <mat-slide-toggle [formControl]="toggleControl" class="mr-8">-->
+    <!--      </mat-slide-toggle>-->
+    <!--      <mat-icon>bedtime</mat-icon>-->
+    <!--    </div>-->
+    <!--  <div>-->
+    <!--    <button mat-raised-button color="warn" (click)="logout()">-->
+    <!--      {{userData.name}}/-->
+    <!--      logout-->
+    <!--    </button>-->
+    <!--  </div>-->
+  </div>
+  <div class="main-wrapper">
+    <router-outlet></router-outlet>
+  </div>

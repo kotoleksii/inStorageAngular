@@ -1,0 +1,22 @@
+.material-page-wrapper {
+  padding: 10px 40px;
+  position: relative;
+
+  .material-table-container {
+    height: 400px;
+    overflow: auto;
+
+    table {
+      width: 100%;
+    }
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+  }
+
+  .add-button {
+    margin-left: auto;
+  }
+}
