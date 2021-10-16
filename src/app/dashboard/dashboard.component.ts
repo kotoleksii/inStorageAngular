@@ -25,20 +25,25 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, private dialog: MatDialog, private overlay: OverlayContainer) {
     this.navLinks = [
       {
+        icon: 'home',
+        label: 'Home',
+        link: './home/',
+        index: 0
+      }, {
         icon: 'work_outline',
         label: 'Materials',
         link: './materials/',
-        index: 0
+        index: 1
       }, {
         icon: 'file_copy',
         label: 'Scores',
         link: './scores/',
-        index: 1
+        index: 2
       }, {
         icon: 'group',
         label: 'Employees',
         link: './employees/',
-        index: 2
+        index: 3
       }
     ];
     this.userData = JSON.parse(<string>localStorage.getItem("user"));

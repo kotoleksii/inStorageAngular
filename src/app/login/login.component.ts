@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', 'auth_token');
       localStorage.setItem('user', JSON.stringify({name: this.login}));
       this.notifierService.notify('success', 'bingo!');
-      this.router.navigate(['dashboard', 'materials']);
+      this.router.navigate(['dashboard', 'home']);
     } else {
       this.notifierService.notify('error', 'wrong data!');
       this.login = '';
