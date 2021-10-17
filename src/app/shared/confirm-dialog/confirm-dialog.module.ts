@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MaterialAddModalComponent} from "./material-add-modal.component";
+import {ConfirmDialogComponent} from "./confirm-dialog.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
-  declarations: [MaterialAddModalComponent],
+  declarations: [ConfirmDialogComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -20,8 +19,8 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatCardModule
   ],
-  exports: [MaterialAddModalComponent]
+  exports: [ConfirmDialogComponent],
 })
-export class MaterialAddModalModule { }
+export class ConfirmDialogModule { }

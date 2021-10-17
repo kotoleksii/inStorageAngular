@@ -7,12 +7,17 @@ import {IMaterial} from "../../shared/interfaces/interfaces";
 import {MaterialService} from "../../shared/services/material.service";
 import {MatDialog} from "@angular/material/dialog";
 import {MaterialAddModalComponent} from "../../shared/material-add-modal/material-add-modal.component";
+import {ConfirmDialogComponent} from "../../shared/confirm-dialog/confirm-dialog.component";
+import {NotifierService} from "angular-notifier";
+
 
 @Component({
   selector: 'app-materials',
   templateUrl: './materials.component.html',
   styleUrls: ['./materials.component.scss']
 })
+
+
 export class MaterialsComponent implements OnInit {
 
   public dataSource: MatTableDataSource<any> | any;
@@ -22,7 +27,7 @@ export class MaterialsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private materialService: MaterialService, public dialog: MatDialog) {
+  constructor(private materialService: MaterialService, public dialog: MatDialog, private notifierService: NotifierService) {
   }
 
   ngOnInit(): void {
@@ -57,6 +62,26 @@ export class MaterialsComponent implements OnInit {
     });
   }
 
+  public openConfirmDialog(id: number, dataToDelete?: any): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: {
+        title: "Are you sure?",
+        // message: "You are about to delete " + dataToDelete.title,
+        message: `You are about to delete <b>${dataToDelete.title}</b>`,
+        initialValue: dataToDelete,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this.notifierService.notify('success', 'Delete ' + dataToDelete.title + ' Success!');
+        this.deleteMaterialItem(id);
+      }
+      console.log(dialogResult);
+    });
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -67,118 +92,6 @@ export class MaterialsComponent implements OnInit {
     }
   }
 }
-
-
-// const MATERIAL_DATA: IMaterial[] = [
-//   {
-//     id: 2,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-//   {
-//     id: 3,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-//   {
-//     id: 4,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-//   {
-//     id: 5,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-//   {
-//     id: 6,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-//   {
-//     id: 7,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-//   {
-//     id: 8,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-//   {
-//     id: 9,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-//   {
-//     id: 10,
-//     title: "corrupte",
-//     inventory_number: "05398446",
-//     date_start: "2020-02-01",
-//     type: "\u0448\u0442.",
-//     amount: 2,
-//     employee_id: 2,
-//     score_id: 32,
-//     total_sum_hr: 1600,
-//     price_hr: 800
-//   },
-// ];
 
 export class MyCustomPaginatorIntl implements MatPaginatorIntl {
   changes = new Subject<void>();

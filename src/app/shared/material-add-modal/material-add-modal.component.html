@@ -1,32 +1,44 @@
 <div class="modal-wrapper">
   <form action="" [formGroup]="addMaterialForm" style="display: inline-flex; flex-direction: column">
-    <mat-form-field>
-      <input formControlName="title" required type="text" matInput placeholder="Title: ">
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="inventory_number" required type="text" matInput placeholder="Inventory Number: ">
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="date_start" required type="text" matInput placeholder="Date Start: ">
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="type" required type="text" matInput placeholder="Type: ">
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="amount" required type="number" matInput placeholder="Amount: ">
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="price_hr" required type="number" matInput placeholder="Price: ">
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="total_sum_hr" required type="number" matInput placeholder="Total Sum: ">
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="employee_id" required type="number" matInput placeholder="Employee: ">
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="score_id" required type="number" matInput placeholder="Score: ">
-    </mat-form-field>
+    <div class="row">
+      <mat-form-field>
+        <input formControlName="title" required type="text" matInput placeholder="Title: ">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="inventory_number" required type="text" matInput placeholder="Inventory Number: ">
+      </mat-form-field>
+            <mat-form-field>
+              <input formControlName="date_start" required type="text" matInput placeholder="Date Start: ">
+            </mat-form-field>
+<!--      <mat-form-field appearance="fill">-->
+      <!--        <input matInput [matDatepicker]="dp" [formControl]="date"-->
+      <!--               formControlName="date_start" required type="text" matInput placeholder="Date Start: ">-->
+      <!--        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>-->
+      <!--        <mat-datepicker #dp></mat-datepicker>-->
+      <!--      </mat-form-field>-->
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <input formControlName="type" required type="text" matInput placeholder="Type: ">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="amount" required type="number" matInput placeholder="Amount: ">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="price" required type="number" matInput placeholder="Price: ">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field>
+        <input formControlName="sum" required type="number" matInput placeholder="Total Sum: ">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="employee_id" required type="number" matInput placeholder="Employee: ">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="score_id" required type="number" matInput placeholder="Score: ">
+      </mat-form-field>
+    </div>
   </form>
   <button mat-raised-button *ngIf="data.method === 'add'"
           (click)="materialModalAction('add')"
