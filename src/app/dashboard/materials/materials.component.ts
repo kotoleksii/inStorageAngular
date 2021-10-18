@@ -2,13 +2,16 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator, MatPaginatorIntl} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
-import {Subject} from "rxjs";
-import {IMaterial} from "../../shared/interfaces/interfaces";
+import {Observable, of, Subject} from "rxjs";
+import {IEmployee, IMaterial, IScore} from "../../shared/interfaces/interfaces";
 import {MaterialService} from "../../shared/services/material.service";
 import {MatDialog} from "@angular/material/dialog";
 import {MaterialAddModalComponent} from "../../shared/material-add-modal/material-add-modal.component";
 import {ConfirmDialogComponent} from "../../shared/confirm-dialog/confirm-dialog.component";
 import {NotifierService} from "angular-notifier";
+import {HttpClient} from "@angular/common/http";
+import {EmployeeService} from "../../shared/services/employee.service";
+import {ScoreService} from "../../shared/services/score.service";
 
 
 @Component({
@@ -20,6 +23,11 @@ import {NotifierService} from "angular-notifier";
 
 export class MaterialsComponent implements OnInit {
 
+  materials: any;
+  employees: any;
+  scores: any;
+  employeeName: any;
+
   public dataSource: MatTableDataSource<any> | any;
   public displayedColumns = ['id', 'title', 'inventory_number', 'date_start', 'type', 'amount',
     'price_hr', 'total_sum_hr', 'employee_id', 'score_id', 'actions'];
@@ -27,11 +35,18 @@ export class MaterialsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private materialService: MaterialService, public dialog: MatDialog, private notifierService: NotifierService) {
+  constructor(private materialService: MaterialService,
+              private employeeService: EmployeeService,
+              private scoreService: ScoreService,
+              public dialog: MatDialog,
+              private notifierService: NotifierService) {
   }
 
   ngOnInit(): void {
     this.getAndSetMaterialItems();
+    this.getMaterialItems();
+    this.getEmployeeItems();
+    this.getScoreItems();
   }
 
   public getAndSetMaterialItems(): void {
@@ -39,6 +54,28 @@ export class MaterialsComponent implements OnInit {
       this.dataSource = new MatTableDataSource<any>(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+    });
+  }
+
+  public getMaterialItems(): void {
+    this.materialService.getMaterialItems().subscribe((res: IMaterial[]) => {
+      this.materials = res;
+    });
+  }
+
+  public getEmployeeItems(): void {
+    this.employeeService.getEmployeeItems().subscribe((res: IEmployee[]) => {
+      this.employees = res;
+    });
+  }
+
+  public getEmployeeById(id: number): string {
+    return this.employees.find((el: any) => el.id === id).last_name;
+  }
+
+  public getScoreItems(): void {
+    this.scoreService.getScoreItems().subscribe((res: IScore[]) => {
+      this.scores = res;
     });
   }
 
