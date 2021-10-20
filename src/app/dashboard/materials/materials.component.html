@@ -116,9 +116,10 @@
 
           <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
             <mat-list>
-              <div mat-subheader>{{element.id}} {{element.title}}</div>
-              <!--                <div mat-line>{{element.inventory_number}}</div>-->
-              <!--                <div mat-line> {{element.date_start}} | Type: {{element.type}}</div>-->
+              <!--              <div mat-subheader>{{element.id}} {{element.title}}</div>-->
+              <qr-code
+                value="id={{element.id}} назва={{element.title}} кіл={{element.amount}}{{element.type}} власник={{element.employee_id}} рахунок={{element.score_id}}"
+                size="128" errorCorrectionLevel="M"></qr-code>
             </mat-list>
           </div>
 

@@ -20,8 +20,8 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   styleUrls: ['./materials.component.scss'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
@@ -29,29 +29,11 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 
 
 export class MaterialsComponent implements OnInit {
-
-  // emp: string = '';
-  // sc: string = '';
-  //
-  // scor: string[] = ['1', '2', '3', '7', '12', '32'];
-  // empl: string[] = ['1', '2', '3', '4', '5', '6', '8'];
-  //
-  // mat: any[] = [
-  //   { title: 'Kristy', emp: '2', sc: '32' },
-  //   { title: 'Nick', emp: '1', sc: '3' },
-  //   { title: 'Ariana', emp: '1', sc: '3' },
-  //   { title: 'Joe', emp: '2', sc: '3' },
-  //   { title: 'Albert', emp: '4', sc: '7' },
-  // ];
-
-
   isTableExpanded = false;
 
   materials: any;
   employees: any;
   scores: any;
-  employeeName: string = '';
-
 
   public dataSource: MatTableDataSource<any> | any;
   public displayedColumns = ['id', 'title', 'inventory_number', 'date_start', 'type', 'amount',
@@ -74,7 +56,7 @@ export class MaterialsComponent implements OnInit {
     this.getScoreItems();
   }
 
-  // Toggel Rows
+  // Toggle Rows
   toggleTableRows() {
     this.isTableExpanded = !this.isTableExpanded;
 
