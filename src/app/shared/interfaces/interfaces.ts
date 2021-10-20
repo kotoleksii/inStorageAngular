@@ -8,6 +8,7 @@ export interface IMaterial {
   price_hr: number;
   total_sum_hr: number;
   employee_id: number;
+  // employee_id: string;
   score_id: number;
 }
 

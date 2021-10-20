@@ -12,10 +12,12 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MaterialAddModalModule} from "./shared/material-add-modal/material-add-modal.module";
 import {ConfirmDialogModule} from "./shared/confirm-dialog/confirm-dialog.module";
+import {TableFilterPipe} from "./table-filter.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
+    // TableFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ import {ConfirmDialogModule} from "./shared/confirm-dialog/confirm-dialog.module
     MatDialogModule,
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

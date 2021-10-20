@@ -11,8 +11,9 @@ import {ConfirmDialogModule} from "../../shared/confirm-dialog/confirm-dialog.mo
     CommonModule,
     MaterialsRoutingModule,
     MaterialAddModalModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
   ],
+  exports: [],
   // providers: [
   //   {provide: MatPaginatorIntl, useClass: MyCustomPaginatorIntl}
   // ]

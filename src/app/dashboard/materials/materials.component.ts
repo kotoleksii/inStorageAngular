@@ -9,24 +9,49 @@ import {MatDialog} from "@angular/material/dialog";
 import {MaterialAddModalComponent} from "../../shared/material-add-modal/material-add-modal.component";
 import {ConfirmDialogComponent} from "../../shared/confirm-dialog/confirm-dialog.component";
 import {NotifierService} from "angular-notifier";
-import {HttpClient} from "@angular/common/http";
 import {EmployeeService} from "../../shared/services/employee.service";
 import {ScoreService} from "../../shared/services/score.service";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 
 @Component({
   selector: 'app-materials',
   templateUrl: './materials.component.html',
-  styleUrls: ['./materials.component.scss']
+  styleUrls: ['./materials.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 
 
 export class MaterialsComponent implements OnInit {
 
+  // emp: string = '';
+  // sc: string = '';
+  //
+  // scor: string[] = ['1', '2', '3', '7', '12', '32'];
+  // empl: string[] = ['1', '2', '3', '4', '5', '6', '8'];
+  //
+  // mat: any[] = [
+  //   { title: 'Kristy', emp: '2', sc: '32' },
+  //   { title: 'Nick', emp: '1', sc: '3' },
+  //   { title: 'Ariana', emp: '1', sc: '3' },
+  //   { title: 'Joe', emp: '2', sc: '3' },
+  //   { title: 'Albert', emp: '4', sc: '7' },
+  // ];
+
+
+  isTableExpanded = false;
+
   materials: any;
   employees: any;
   scores: any;
-  employeeName: any;
+  employeeName: string = '';
+
 
   public dataSource: MatTableDataSource<any> | any;
   public displayedColumns = ['id', 'title', 'inventory_number', 'date_start', 'type', 'amount',
@@ -47,6 +72,15 @@ export class MaterialsComponent implements OnInit {
     this.getMaterialItems();
     this.getEmployeeItems();
     this.getScoreItems();
+  }
+
+  // Toggel Rows
+  toggleTableRows() {
+    this.isTableExpanded = !this.isTableExpanded;
+
+    this.dataSource.data.forEach((row: any) => {
+      row.isExpanded = this.isTableExpanded;
+    })
   }
 
   public getAndSetMaterialItems(): void {
@@ -71,6 +105,13 @@ export class MaterialsComponent implements OnInit {
 
   public getEmployeeById(id: number): string {
     return this.employees.find((el: any) => el.id === id).last_name;
+
+    // console.log(typeof (this.employeeName)) ;
+    // console.log(this.employeeName);
+  }
+
+  public getScoreById(id: number): string {
+    return this.scores.find((el: any) => el.id === id).title;
   }
 
   public getScoreItems(): void {
