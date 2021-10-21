@@ -114,12 +114,14 @@
       <ng-container matColumnDef="expandedDetail">
         <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
 
-          <div class="row student-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
+          <div class="row material-element-detail" [@detailExpand]="element.isExpanded ? 'expanded' : 'collapsed'">
             <mat-list>
-              <!--              <div mat-subheader>{{element.id}} {{element.title}}</div>-->
+              <div mat-subheader>{{element.title}}({{element.id}})</div>
+
               <qr-code
                 value="id={{element.id}} назва={{element.title}} кіл={{element.amount}}{{element.type}} власник={{element.employee_id}} рахунок={{element.score_id}}"
                 size="128" errorCorrectionLevel="M"></qr-code>
+
             </mat-list>
           </div>
 
@@ -130,7 +132,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       <!-- Extra row to show detail content column -->
-      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="student-detail-row"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="material-detail-row"></tr>
     </table>
 
     <mat-paginator [length]="200" [pageSizeOptions]="[5, 10, 20]" aria-label="Select page"></mat-paginator>

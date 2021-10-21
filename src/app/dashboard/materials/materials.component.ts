@@ -12,6 +12,7 @@ import {NotifierService} from "angular-notifier";
 import {EmployeeService} from "../../shared/services/employee.service";
 import {ScoreService} from "../../shared/services/score.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {QrCodeComponent} from "ng-qrcode";
 
 
 @Component({
@@ -29,6 +30,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 
 
 export class MaterialsComponent implements OnInit {
+
   isTableExpanded = false;
 
   materials: any;
@@ -92,9 +94,11 @@ export class MaterialsComponent implements OnInit {
     // console.log(this.employeeName);
   }
 
+
   public getScoreById(id: number): string {
     return this.scores.find((el: any) => el.id === id).title;
   }
+
 
   public getScoreItems(): void {
     this.scoreService.getScoreItems().subscribe((res: IScore[]) => {

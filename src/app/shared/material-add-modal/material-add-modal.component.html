@@ -40,12 +40,12 @@
       </mat-form-field>
     </div>
   </form>
-  <button mat-raised-button *ngIf="data.method === 'add'"
+  <button mat-raised-button color="primary" *ngIf="data.method === 'add'"
           (click)="materialModalAction('add')"
           [disabled]="addMaterialForm.invalid">
     ADD MATERIAL
   </button>
-  <button mat-raised-button *ngIf="data.method === 'edit'"
+  <button mat-raised-button color="primary" *ngIf="data.method === 'edit'"
           (click)="materialModalAction('edit')"
           [disabled]="addMaterialForm.invalid">
     EDIT MATERIAL
