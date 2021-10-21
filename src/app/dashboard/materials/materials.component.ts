@@ -12,7 +12,6 @@ import {NotifierService} from "angular-notifier";
 import {EmployeeService} from "../../shared/services/employee.service";
 import {ScoreService} from "../../shared/services/score.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
-import {QrCodeComponent} from "ng-qrcode";
 
 
 @Component({
@@ -58,15 +57,6 @@ export class MaterialsComponent implements OnInit {
     this.getScoreItems();
   }
 
-  // Toggle Rows
-  toggleTableRows() {
-    this.isTableExpanded = !this.isTableExpanded;
-
-    this.dataSource.data.forEach((row: any) => {
-      row.isExpanded = this.isTableExpanded;
-    })
-  }
-
   public getAndSetMaterialItems(): void {
     this.materialService.getMaterialItems().subscribe((res: IMaterial[]) => {
       this.dataSource = new MatTableDataSource<any>(res);
@@ -89,9 +79,6 @@ export class MaterialsComponent implements OnInit {
 
   public getEmployeeById(id: number): string {
     return this.employees.find((el: any) => el.id === id).last_name;
-
-    // console.log(typeof (this.employeeName)) ;
-    // console.log(this.employeeName);
   }
 
 

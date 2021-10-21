@@ -7,15 +7,24 @@
       <mat-form-field>
         <input formControlName="inventory_number" required type="text" matInput placeholder="Inventory Number: ">
       </mat-form-field>
-            <mat-form-field>
-              <input formControlName="date_start" required type="text" matInput placeholder="Date Start: ">
-            </mat-form-field>
-<!--      <mat-form-field appearance="fill">-->
-      <!--        <input matInput [matDatepicker]="dp" [formControl]="date"-->
+
+      <!--            <mat-form-field>-->
+      <!--              <input formControlName="date_start" required type="text" matInput placeholder="Date Start: ">-->
+      <!--            </mat-form-field>-->
+      <!--      <mat-form-field appearance="fill">-->
+      <!--        <input matInput [matDatepicker]="dp"-->
       <!--               formControlName="date_start" required type="text" matInput placeholder="Date Start: ">-->
       <!--        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>-->
       <!--        <mat-datepicker #dp></mat-datepicker>-->
       <!--      </mat-form-field>-->
+
+      <mat-form-field appearance="fill">
+<!--        <mat-label>Choose a date</mat-label>-->
+        <input matInput formControlName="date_start" placeholder="Date Start:" [matDatepicker]="picker" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
     </div>
     <div class="row">
       <mat-form-field>

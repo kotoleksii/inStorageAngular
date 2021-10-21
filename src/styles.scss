@@ -14,6 +14,10 @@ $angular-primary: mat.define-palette(mat.$pink-palette, 700, 200, 400);
 $angular-accent: mat.define-palette(mat.$lime-palette, 300, 200, 900);
 $angular-warn: mat.define-palette(mat.$red-palette);
 
+$angular-primary_light: mat.define-palette(mat.$pink-palette);
+$angular-accent_light: mat.define-palette(mat.$lime-palette);
+$angular-warn_light: mat.define-palette(mat.$red-palette);
+
 $angular-default-theme: mat.define-light-theme(
     (
       color: (

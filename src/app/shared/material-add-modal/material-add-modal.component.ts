@@ -3,12 +3,6 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {NotifierService} from "angular-notifier";
 import {MaterialService} from "../services/material.service";
-import {
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-  MAT_MOMENT_DATE_FORMATS
-} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 import * as _moment from 'moment';
 // @ts-ignore
@@ -16,32 +10,18 @@ import {default as _rollupMoment} from 'moment';
 
 const moment = _rollupMoment || _moment;
 
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'YYYY-MM-DD',
-  },
-  display: {
-    dateInput: 'YYYY-MM-DD',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'L',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @Component({
   selector: 'app-material-add-modal',
   templateUrl: './material-add-modal.component.html',
   styleUrls: ['./material-add-modal.component.scss'],
-  providers: [
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  ],
+
 })
 
 
 export class MaterialAddModalComponent implements OnInit {
 
-  date = new FormControl(moment("2020/02/12", "YYYY/MM/DD"));
+  // date = new FormControl(moment("2020/02/12", "YYYY/MM/DD"));
 
 
   public addMaterialForm = this.fb.group({
@@ -82,7 +62,14 @@ export class MaterialAddModalComponent implements OnInit {
 
   public materialModalAction(method: string): void {
     if (method === 'add') {
-      this.materialService.addMaterialItem(this.addMaterialForm.value).subscribe(res => {
+
+      const qwe = {
+        ...this.addMaterialForm.value
+      };
+
+      qwe.date_start = moment(this.addMaterialForm.controls.date_start.value).format('YYYY-MM-DD');
+      // console.log(qwe);
+      this.materialService.addMaterialItem(qwe).subscribe(res => {
           this.notifierService.notify('success', 'Add Success!');
           this.dialogRef.close();
         },
