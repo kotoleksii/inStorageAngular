@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {NotifierService} from "angular-notifier";
-import {MaterialService} from "../services/material.service";
+import {MaterialService} from "../../services/material.service";
 
 import * as _moment from 'moment';
 // @ts-ignore

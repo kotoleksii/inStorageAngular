@@ -10,10 +10,10 @@ export interface DialogData {
 
 @Component({
   selector: 'app-confirm-dialog',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss']
+  templateUrl: './confirm-dialog-modal.component.html',
+  styleUrls: ['./confirm-dialog-modal.component.scss']
 })
-export class ConfirmDialogComponent implements OnInit {
+export class ConfirmDialogModalComponent implements OnInit {
 
   public dialogData: DialogData | any;
   public title: string = '';
@@ -28,7 +28,7 @@ export class ConfirmDialogComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<ConfirmDialogComponent>,
+    public dialogRef: MatDialogRef<ConfirmDialogModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
   }

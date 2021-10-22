@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MaterialsRoutingModule} from "./materials-routing.module";
-import {MaterialAddModalModule} from "../../shared/material-add-modal/material-add-modal.module";
-import {ConfirmDialogModule} from "../../shared/confirm-dialog/confirm-dialog.module";
+import {MaterialAddModalModule} from "../../shared/modals/material-add-modal/material-add-modal.module";
+import {ConfirmDialogModalModule} from "../../shared/modals/confirm-dialog-modal/confirm-dialog-modal.module";
 import {MaterialsComponent} from "./materials.component";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
@@ -14,6 +14,8 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatSelectModule} from "@angular/material/select";
 import {MatListModule} from "@angular/material/list";
 import {QrCodeModule} from "ng-qrcode";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MaterialTransferModalModule} from "../../shared/modals/material-transfer-modal/material-transfer-modal.module";
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import {QrCodeModule} from "ng-qrcode";
     CommonModule,
     MaterialsRoutingModule,
     MaterialAddModalModule,
-    ConfirmDialogModule,
+    MaterialTransferModalModule,
+    ConfirmDialogModalModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -32,7 +35,8 @@ import {QrCodeModule} from "ng-qrcode";
     MatIconModule,
     MatSelectModule,
     MatListModule,
-    QrCodeModule
+    QrCodeModule,
+    MatTooltipModule
   ],
   exports: [],
   // providers: [

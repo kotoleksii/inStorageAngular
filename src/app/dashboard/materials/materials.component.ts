@@ -6,12 +6,13 @@ import {Observable, of, Subject} from "rxjs";
 import {IEmployee, IMaterial, IScore} from "../../shared/interfaces/interfaces";
 import {MaterialService} from "../../shared/services/material.service";
 import {MatDialog} from "@angular/material/dialog";
-import {MaterialAddModalComponent} from "../../shared/material-add-modal/material-add-modal.component";
-import {ConfirmDialogComponent} from "../../shared/confirm-dialog/confirm-dialog.component";
+import {MaterialAddModalComponent} from "../../shared/modals/material-add-modal/material-add-modal.component";
+import {ConfirmDialogModalComponent} from "../../shared/modals/confirm-dialog-modal/confirm-dialog-modal.component";
 import {NotifierService} from "angular-notifier";
 import {EmployeeService} from "../../shared/services/employee.service";
 import {ScoreService} from "../../shared/services/score.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MaterialTransferModalComponent} from "../../shared/modals/material-transfer-modal/material-transfer-modal.component";
 
 
 @Component({
@@ -114,7 +115,7 @@ export class MaterialsComponent implements OnInit {
   }
 
   public openConfirmDialog(id: number, dataToDelete?: any): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmDialogModalComponent, {
       maxWidth: "400px",
       data: {
         title: "Are you sure?",
@@ -130,6 +131,13 @@ export class MaterialsComponent implements OnInit {
         this.deleteMaterialItem(id);
       }
       console.log(dialogResult);
+    });
+  }
+
+  public openTransferDialog(): void {
+    const dialogRef = this.dialog.open(MaterialTransferModalComponent, {});
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
     });
   }
 
