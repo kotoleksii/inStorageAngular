@@ -10,19 +10,33 @@ import {IMaterial} from "../../shared/interfaces/interfaces";
 })
 export class HomeComponent implements OnInit {
 
+  materials: number | any;
+
   constructor(private router: Router,
               private materialService: MaterialService,
   ) {
   }
 
   ngOnInit(): void {
-    console.log(this.getMaterialItemsCount())
+    // this.getMaterialItemsCount();
+  }
+
+  public getMaterialItemsCount() {
+    this.materialService.getMaterialItems().subscribe((res: IMaterial[]) => {
+      this.materials = res.length;
+    })
   }
 
   single: any = [
     {
       "name": "Materials",
-      "value": 1003
+      "value": (() => {
+        let temp = 0;
+        return this.materialService.getMaterialItems().subscribe((res: IMaterial[]) => {
+          temp = res.length;
+          return temp;
+        })
+      })()
     },
     {
       "name": "Scores",
@@ -33,6 +47,7 @@ export class HomeComponent implements OnInit {
       "value": 150
     }
   ];
+
   view: any = [1000, 200];
 
   colorScheme: any = {
@@ -45,9 +60,5 @@ export class HomeComponent implements OnInit {
     console.log(event);
   }
 
-  public getMaterialItemsCount(): any {
-    this.materialService.getMaterialItems().subscribe((res: IMaterial[]) => {
-      res.length;
-    });
-  }
+
 }

@@ -21,9 +21,6 @@ const moment = _rollupMoment || _moment;
 
 export class MaterialAddModalComponent implements OnInit {
 
-  // date = new FormControl(moment("2020/02/12", "YYYY/MM/DD"));
-
-
   public addMaterialForm = this.fb.group({
     title: ['', Validators.required],
     inventory_number: ['', Validators.required],
@@ -31,7 +28,7 @@ export class MaterialAddModalComponent implements OnInit {
     type: ['', Validators.required],
     amount: ['', Validators.required],
     price: ['', Validators.required],
-    sum: ['', Validators.required],
+    // sum: ['', Validators.required],
     employee_id: ['', Validators.required],
     score_id: ['', Validators.required],
   });
@@ -54,7 +51,8 @@ export class MaterialAddModalComponent implements OnInit {
       this.addMaterialForm.controls.type.setValue(this.data.initialValue.type);
       this.addMaterialForm.controls.amount.setValue(this.data.initialValue.amount);
       this.addMaterialForm.controls.price.setValue(this.data.initialValue.price);
-      this.addMaterialForm.controls.sum.setValue(this.data.initialValue.sum);
+      // this.addMaterialForm.controls.sum.setValue(this.data.initialValue.sum);
+      this.addMaterialForm.controls.sum.setValue(this.data.initialValue.amount * this.data.initialValue.price);
       this.addMaterialForm.controls.employee_id.setValue(this.data.initialValue.employee_id);
       this.addMaterialForm.controls.score_id.setValue(this.data.initialValue.score_id);
     }
@@ -63,13 +61,14 @@ export class MaterialAddModalComponent implements OnInit {
   public materialModalAction(method: string): void {
     if (method === 'add') {
 
-      const qwe = {
+      const addMaterialFormValues = {
         ...this.addMaterialForm.value
       };
 
-      qwe.date_start = moment(this.addMaterialForm.controls.date_start.value).format('YYYY-MM-DD');
+      addMaterialFormValues.date_start = moment(this.addMaterialForm.controls.date_start.value).format('YYYY-MM-DD');
+      addMaterialFormValues.sum = addMaterialFormValues.amount * addMaterialFormValues.price;
       // console.log(qwe);
-      this.materialService.addMaterialItem(qwe).subscribe(res => {
+      this.materialService.addMaterialItem(addMaterialFormValues).subscribe(res => {
           this.notifierService.notify('success', 'Add Success!');
           this.dialogRef.close();
         },
