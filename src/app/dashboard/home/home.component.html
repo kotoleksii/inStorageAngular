@@ -1,10 +1,15 @@
-<div class="home-content">
-  <ngx-charts-number-card
-    [view]="view"
-    [scheme]="colorScheme"
-    [results]="single"
-    [cardColor]="cardColor"
-    (select)="onSelect($event)">
-    >
-  </ngx-charts-number-card>
+<div class="home-wrapper">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi deleniti dicta dolore dolorem dolores
+    doloribus dolorum eligendi eum, exercitationem, facere illum iste magnam magni minima numquam placeat repudiandae
+    sequi temporibus vitae. Consectetur debitis esse minima odio velit voluptate voluptates.</p>
+  <div class="home-charts">
+    <ngx-charts-number-card
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="single"
+      [cardColor]="cardColor"
+      (select)="onSelect($event)">
+      >
+    </ngx-charts-number-card>
+  </div>
 </div>

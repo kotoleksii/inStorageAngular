@@ -1,6 +1,12 @@
-.home-content {
+.home-wrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.home-charts {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  //padding: 20px;
+  margin-bottom: 48px;
 }

@@ -48,12 +48,12 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  view: any = [1000, 200];
+  view: any = [1000, 300];
 
   colorScheme: any = {
-    domain: ['#5AA454', '#7aa3e5', '#a8385d']
+    domain: ['#dce775', '#7aa3e5', '#c2185b']
   };
-  cardColor: string = '#232837';
+  cardColor: string = '#444444';
 
   onSelect(event: any) {
     this.router.navigate(['dashboard', event.name.toLowerCase()]);

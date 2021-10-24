@@ -3,6 +3,11 @@
   //justify-content: space-between;
 }
 
+html, body {
+  min-height: 100vh;
+  overflow: auto;
+}
+
 .tab-icon {
   margin-right: 8px;
 }
@@ -18,7 +23,7 @@ mat-toolbar {
 
 .content {
   padding: 16px;
-  min-height: 100vh;
+  //min-height: 100vh;
 }
 
 mat-card {
@@ -33,4 +38,11 @@ mat-card {
 
 .logo-img {
   margin-top: 9px;
+}
+
+.footer {
+  font-size: 12px;
+  margin-top: auto;
+  text-align: center;
+  color: gray;
 }

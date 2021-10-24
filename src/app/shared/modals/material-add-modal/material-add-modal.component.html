@@ -38,15 +38,38 @@
       </mat-form-field>
     </div>
     <div class="row">
+
 <!--      <mat-form-field>-->
 <!--        <input formControlName="sum" required type="number" matInput placeholder="Total Sum: ">-->
 <!--      </mat-form-field>-->
-      <mat-form-field>
-        <input formControlName="employee_id" required type="number" matInput placeholder="Employee: ">
+
+<!--      <mat-form-field>-->
+<!--        <input formControlName="employee_id" required type="number" matInput placeholder="Employee: ">-->
+<!--      </mat-form-field>-->
+
+<!--      <mat-form-field>-->
+<!--        <input formControlName="score_id" required type="number" matInput placeholder="Score: ">-->
+<!--      </mat-form-field>-->
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Select Employee</mat-label>
+        <mat-select formControlName="employee_id" required>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let employee of employees"
+                      [value]="employee.id">{{employee.id}} {{employee.description}}</mat-option>
+        </mat-select>
       </mat-form-field>
-      <mat-form-field>
-        <input formControlName="score_id" required type="number" matInput placeholder="Score: ">
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Select Score</mat-label>
+        <mat-select formControlName="score_id" required>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let score of scores"
+                      [value]="score.id">{{score.id}} {{score.title}}</mat-option>
+        </mat-select>
       </mat-form-field>
+
+
     </div>
   </form>
   <button mat-raised-button color="primary" *ngIf="data.method === 'add'"

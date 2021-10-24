@@ -7,6 +7,9 @@ import {MaterialService} from "../../services/material.service";
 import * as _moment from 'moment';
 // @ts-ignore
 import {default as _rollupMoment} from 'moment';
+import {IEmployee, IScore} from "../../interfaces/interfaces";
+import {EmployeeService} from "../../services/employee.service";
+import {ScoreService} from "../../services/score.service";
 
 const moment = _rollupMoment || _moment;
 
@@ -20,6 +23,9 @@ const moment = _rollupMoment || _moment;
 
 
 export class MaterialAddModalComponent implements OnInit {
+
+  employees: any;
+  scores: any;
 
   public addMaterialForm = this.fb.group({
     title: ['', Validators.required],
@@ -39,7 +45,10 @@ export class MaterialAddModalComponent implements OnInit {
               public dialogRef: MatDialogRef<MaterialAddModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private notifierService: NotifierService,
-              private materialService: MaterialService) {
+              private materialService: MaterialService,
+              private employeeService: EmployeeService,
+              private scoreService: ScoreService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -56,6 +65,9 @@ export class MaterialAddModalComponent implements OnInit {
       this.addMaterialForm.controls.employee_id.setValue(this.data.initialValue.employee_id);
       this.addMaterialForm.controls.score_id.setValue(this.data.initialValue.score_id);
     }
+
+    this.getEmployeeItems();
+    this.getScoreItems();
   }
 
   public materialModalAction(method: string): void {
@@ -86,5 +98,16 @@ export class MaterialAddModalComponent implements OnInit {
         }
       )
     }
+  }
+
+  public getEmployeeItems(): void {
+    this.employeeService.getEmployeeItems().subscribe((res: IEmployee[]) => {
+      this.employees = res;
+    });
+  }
+  public getScoreItems(): void {
+    this.scoreService.getScoreItems().subscribe((res: IScore[]) => {
+      this.scores = res;
+    });
   }
 }
