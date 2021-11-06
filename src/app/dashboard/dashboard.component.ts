@@ -14,15 +14,13 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger | any;
 
-  someMethod() {
-    this.trigger.openMenu();
-  }
-
   public userData: any;
   public navLinks: any[] = [];
   public activeLinkIndex = -1;
 
-  constructor(private router: Router, private dialog: MatDialog, private overlay: OverlayContainer) {
+  constructor(private router: Router,
+              private dialog: MatDialog,
+              private overlay: OverlayContainer) {
     this.navLinks = [
       {
         icon: 'home',
@@ -46,6 +44,7 @@ export class DashboardComponent implements OnInit {
         index: 3
       }
     ];
+
     this.userData = JSON.parse(<string>localStorage.getItem("user"));
   }
 
@@ -59,8 +58,10 @@ export class DashboardComponent implements OnInit {
       this.className = darkMode ? darkClassName : '';
       if (darkMode) {
         this.overlay.getContainerElement().classList.add(darkClassName);
+        localStorage.setItem('data-theme', 'dark');
       } else {
         this.overlay.getContainerElement().classList.remove(darkClassName);
+        localStorage.setItem('data-theme', 'light');
       }
     });
   }

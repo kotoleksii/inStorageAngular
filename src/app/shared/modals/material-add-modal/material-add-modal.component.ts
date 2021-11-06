@@ -34,7 +34,7 @@ export class MaterialAddModalComponent implements OnInit {
     type: ['', Validators.required],
     amount: ['', Validators.required],
     price: ['', Validators.required],
-    // sum: ['', Validators.required],
+    sum: ['', Validators.required],
     employee_id: ['', Validators.required],
     score_id: ['', Validators.required],
   });
@@ -109,5 +109,8 @@ export class MaterialAddModalComponent implements OnInit {
     this.scoreService.getScoreItems().subscribe((res: IScore[]) => {
       this.scores = res;
     });
+  }
+  public getEmployeeById(id: number): string {
+    return this.employees.find((el: any) => el.id === id).first_name;
   }
 }

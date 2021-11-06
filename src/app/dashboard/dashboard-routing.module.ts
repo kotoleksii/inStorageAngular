@@ -52,7 +52,7 @@ const routes: Routes = [
     MatSlideToggleModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    MatMenuModule
+    MatMenuModule,
   ]
 })
 export class DashboardRoutingModule {
