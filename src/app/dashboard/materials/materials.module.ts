@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MaterialsRoutingModule} from "./materials-routing.module";
-import {MaterialAddModalModule} from "../../shared/modals/material-add-modal/material-add-modal.module";
+import {MaterialActionModalModule} from "../../shared/modals/material-action-modal/material-action-modal.module";
 import {ConfirmDialogModalModule} from "../../shared/modals/confirm-dialog-modal/confirm-dialog-modal.module";
 import {MaterialsComponent} from "./materials.component";
 import {MatTableModule} from "@angular/material/table";
@@ -23,7 +23,7 @@ import {MaterialTransferModalModule} from "../../shared/modals/material-transfer
   imports: [
     CommonModule,
     MaterialsRoutingModule,
-    MaterialAddModalModule,
+    MaterialActionModalModule,
     MaterialTransferModalModule,
     ConfirmDialogModalModule,
     MatTableModule,

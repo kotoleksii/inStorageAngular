@@ -6,7 +6,7 @@ import {Observable, of, Subject} from "rxjs";
 import {IEmployee, IMaterial, IScore} from "../../shared/interfaces/interfaces";
 import {MaterialService} from "../../shared/services/material.service";
 import {MatDialog} from "@angular/material/dialog";
-import {MaterialAddModalComponent} from "../../shared/modals/material-add-modal/material-add-modal.component";
+import {MaterialActionModalComponent} from "../../shared/modals/material-action-modal/material-action-modal.component";
 import {ConfirmDialogModalComponent} from "../../shared/modals/confirm-dialog-modal/confirm-dialog-modal.component";
 import {NotifierService} from "angular-notifier";
 import {EmployeeService} from "../../shared/services/employee.service";
@@ -102,7 +102,7 @@ export class MaterialsComponent implements OnInit {
   }
 
   public openDialog(method: string, dataToEdit?: any): void {
-    const dialogRef = this.dialog.open(MaterialAddModalComponent, {
+    const dialogRef = this.dialog.open(MaterialActionModalComponent, {
       data: {
         method: method,
         initialValue: dataToEdit,

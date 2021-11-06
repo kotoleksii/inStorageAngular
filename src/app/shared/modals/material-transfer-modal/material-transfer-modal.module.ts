@@ -6,6 +6,9 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSelectModule} from "@angular/material/select";
+import {MatListModule} from "@angular/material/list";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import {MatIconModule} from "@angular/material/icon";
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatDialogModule,
+    MatIconModule,
+    MatSelectModule,
+    MatListModule,
   ],
   exports: [MaterialTransferModalComponent]
 })

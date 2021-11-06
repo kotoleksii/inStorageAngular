@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaterialAddModalComponent } from './material-add-modal.component';
+import { MaterialActionModalComponent } from './material-action-modal.component';
 
 describe('MaterialAddModalComponent', () => {
-  let component: MaterialAddModalComponent;
-  let fixture: ComponentFixture<MaterialAddModalComponent>;
+  let component: MaterialActionModalComponent;
+  let fixture: ComponentFixture<MaterialActionModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MaterialAddModalComponent ]
+      declarations: [ MaterialActionModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MaterialAddModalComponent);
+    fixture = TestBed.createComponent(MaterialActionModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

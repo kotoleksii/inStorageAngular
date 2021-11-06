@@ -10,7 +10,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
-import {MaterialAddModalModule} from "./shared/modals/material-add-modal/material-add-modal.module";
+import {MaterialActionModalModule} from "./shared/modals/material-action-modal/material-action-modal.module";
 import {ConfirmDialogModalModule} from "./shared/modals/confirm-dialog-modal/confirm-dialog-modal.module";
 import {MaterialTransferModalModule} from "./shared/modals/material-transfer-modal/material-transfer-modal.module";
 
@@ -28,7 +28,7 @@ import {MaterialTransferModalModule} from "./shared/modals/material-transfer-mod
     HttpClientModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MaterialAddModalModule,
+    MaterialActionModalModule,
     MaterialTransferModalModule,
     ConfirmDialogModalModule,
     MatDialogModule,

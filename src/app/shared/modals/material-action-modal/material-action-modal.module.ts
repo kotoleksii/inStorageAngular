@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MaterialAddModalComponent} from "./material-add-modal.component";
+import {MaterialActionModalComponent} from "./material-action-modal.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -14,7 +14,7 @@ import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
-  declarations: [MaterialAddModalComponent],
+  declarations: [MaterialActionModalComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -31,6 +31,6 @@ import {MatListModule} from "@angular/material/list";
   providers: [
     MatDatepickerModule
   ],
-  exports: [MaterialAddModalComponent]
+  exports: [MaterialActionModalComponent]
 })
-export class MaterialAddModalModule { }
+export class MaterialActionModalModule { }
